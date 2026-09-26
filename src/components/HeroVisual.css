@@ -1,0 +1,647 @@
+/* ==========================================================================
+   HeroVisual.css — "Orbiting Services" Constellation Graphic
+   KR Infosoft brand-aligned responsive visual system
+   ========================================================================== */
+
+.hero-visual-container {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Ambient Back Glow */
+.hero-visual-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  right: 15%;
+  bottom: 15%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 163, 255, 0.28) 0%,
+    rgba(1, 77, 175, 0.16) 45%,
+    transparent 70%
+  );
+  filter: blur(55px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  animation: visualPulseGlow 6s ease-in-out infinite;
+}
+
+/* SVG Constellation Network Canvas */
+.hero-visual-svg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Orbital Rings (Concentric Dashed Lines) */
+.orbital-ring {
+  transform-origin: 270px 250px;
+  fill: none;
+  stroke: rgba(0, 132, 255, 0.16);
+  stroke-dasharray: 6 8;
+  vector-effect: non-scaling-stroke;
+}
+
+[data-theme="dark"] .orbital-ring {
+  stroke: rgba(0, 163, 255, 0.2);
+}
+
+.orbital-ring-outer {
+  stroke-width: 1.5;
+  animation: orbitRotateClockwise 45s linear infinite;
+}
+
+.orbital-ring-inner {
+  stroke-width: 1.2;
+  stroke-dasharray: 4 6;
+  animation: orbitRotateCounterClockwise 35s linear infinite;
+}
+
+/* SVG Constellation Connection Lines */
+.constellation-line-base {
+  stroke: rgba(0, 132, 255, 0.18);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+[data-theme="dark"] .constellation-line-base {
+  stroke: rgba(0, 163, 255, 0.22);
+}
+
+.constellation-line-pulse {
+  stroke: url(#lineGradient);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 30 180;
+  animation: dashPulseStream 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.constellation-cross-link {
+  stroke: rgba(1, 77, 175, 0.1);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+[data-theme="dark"] .constellation-cross-link {
+  stroke: rgba(0, 132, 255, 0.14);
+}
+
+/* Central Core Hub */
+.central-core-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.central-core-orb {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid rgba(0, 132, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(1, 77, 175, 0.2), 0 0 25px rgba(0, 163, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  cursor: pointer;
+}
+
+.central-core-orb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 38px rgba(1, 77, 175, 0.3), 0 0 35px rgba(0, 163, 255, 0.45);
+}
+
+.central-core-logo {
+  max-width: 78px;
+  max-height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(1, 77, 175, 0.25));
+}
+
+/* Core Expanding Radar Wave Rings */
+.core-pulse-wave,
+.core-pulse-wave-delayed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 163, 255, 0.45);
+  pointer-events: none;
+  animation: radarWave 4s ease-out infinite;
+}
+
+.core-pulse-wave-delayed {
+  animation-delay: 2s;
+}
+
+/* Core Status Pill */
+.central-core-status {
+  margin-top: 10px;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 132, 255, 0.25);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  box-shadow: 0 4px 12px rgba(1, 77, 175, 0.1);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .central-core-status {
+  color: var(--primary-cyan);
+  border-color: rgba(0, 163, 255, 0.3);
+}
+
+.status-dot-active {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 6px #10B981;
+  animation: liveBeacon 2s infinite;
+}
+
+/* 4 Orbiting Service Nodes */
+.service-node {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(1, 77, 175, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.service-node:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 32px rgba(0, 132, 255, 0.22);
+  border-color: var(--primary-light);
+}
+
+/* Service Node Positions (Symmetrical Quadrants around 270x250) */
+.service-node-software {
+  top: 35px;
+  left: 15px;
+  animation: floatNodeA 7s ease-in-out infinite;
+}
+
+.service-node-ai {
+  top: 35px;
+  right: 15px;
+  animation: floatNodeB 6.5s ease-in-out infinite 0.8s;
+}
+
+.service-node-mobile {
+  bottom: 45px;
+  left: 20px;
+  animation: floatNodeB 7.5s ease-in-out infinite 1.4s;
+}
+
+.service-node-web {
+  bottom: 45px;
+  right: 20px;
+  animation: floatNodeA 6.8s ease-in-out infinite 2s;
+}
+
+/* Node Icon Container */
+.service-node-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(1, 77, 175, 0.28);
+  transition: transform var(--transition-fast);
+}
+
+.service-node:hover .service-node-icon {
+  transform: rotate(5deg) scale(1.08);
+}
+
+.service-node-title {
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.service-node-sub {
+  font-size: 0.69rem;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Floating Stat Chips */
+.floating-stat-chip {
+  position: absolute;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 132, 255, 0.25);
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(1, 77, 175, 0.12);
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: var(--text);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: auto;
+  transition: transform var(--transition-fast);
+}
+
+.floating-stat-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 132, 255, 0.22);
+}
+
+/* Positions for Floating Stat Chips */
+.stat-chip-uptime {
+  top: 155px;
+  right: -5px;
+  animation: floatStatChip 5.5s ease-in-out infinite 0.3s;
+}
+
+.stat-chip-speed {
+  bottom: 165px;
+  left: -8px;
+  animation: floatStatChip 6s ease-in-out infinite 1.6s;
+}
+
+.stat-chip-ai {
+  top: 255px;
+  right: 18px;
+  animation: floatStatChip 6.5s ease-in-out infinite 2.6s;
+}
+
+/* ==========================================================================
+   Keyframes & Animations
+   ========================================================================== */
+
+@keyframes orbitRotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitRotateCounterClockwise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dashPulseStream {
+  0% {
+    stroke-dashoffset: 210;
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.1;
+  }
+}
+
+@keyframes radarWave {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes liveBeacon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes visualPulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes floatNodeA {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatNodeB {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes floatStatChip {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Large Tablets & Medium Desktops */
+@media (max-width: 991px) {
+  .hero-visual-container {
+    max-width: 480px;
+    height: 460px;
+    margin-top: 1.5rem;
+  }
+
+  .orbital-ring {
+    transform-origin: 240px 230px;
+  }
+
+  .service-node {
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+  .service-node-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .service-node-title {
+    font-size: 0.78rem;
+  }
+
+  .service-node-sub {
+    font-size: 0.65rem;
+  }
+
+  .stat-chip-uptime {
+    right: 0px;
+  }
+
+  .stat-chip-speed {
+    left: 0px;
+  }
+}
+
+/* Mobile Screens (<= 576px - Standard Smartphones) */
+@media (max-width: 576px) {
+  .hero-visual-container {
+    width: 100%;
+    max-width: min(100%, 390px);
+    height: 380px;
+    margin: 0 auto;
+  }
+
+  .central-core-orb {
+    width: 84px;
+    height: 84px;
+  }
+
+  .central-core-logo {
+    max-width: 58px;
+    max-height: 34px;
+  }
+
+  .core-pulse-wave,
+  .core-pulse-wave-delayed {
+    width: 84px;
+    height: 84px;
+  }
+
+  .central-core-status {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+    margin-top: 6px;
+  }
+
+  .service-node {
+    padding: 6px 10px;
+    gap: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(1, 77, 175, 0.12);
+  }
+
+  .service-node-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .service-node-title {
+    font-size: 0.74rem;
+    font-weight: 700;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+
+  .service-node-sub {
+    display: block !important; /* Visible on smartphone as requested */
+    font-size: 0.62rem;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .service-node-software {
+    top: 10px;
+    left: 4px;
+  }
+
+  .service-node-ai {
+    top: 10px;
+    right: 4px;
+  }
+
+  .service-node-mobile {
+    bottom: 12px;
+    left: 4px;
+  }
+
+  .service-node-web {
+    bottom: 12px;
+    right: 4px;
+  }
+
+  .floating-stat-chip {
+    font-size: 0.66rem;
+    padding: 3px 8px;
+    gap: 5px;
+  }
+
+  .stat-chip-uptime {
+    top: 105px;
+    right: 4px;
+    display: inline-flex;
+  }
+
+  .stat-chip-speed {
+    bottom: 105px;
+    left: 4px;
+    display: inline-flex;
+  }
+
+  .stat-chip-ai {
+    top: 185px;
+    right: 8px;
+    display: inline-flex;
+  }
+}
+
+/* Extra-small Smartphones (<= 375px) */
+@media (max-width: 375px) {
+  .hero-visual-container {
+    max-width: 330px;
+    height: 345px;
+  }
+
+  .central-core-orb {
+    width: 74px;
+    height: 74px;
+  }
+
+  .central-core-logo {
+    max-width: 50px;
+    max-height: 28px;
+  }
+
+  .service-node {
+    padding: 4px 7px;
+    gap: 6px;
+    border-radius: 10px;
+  }
+
+  .service-node-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+
+  .service-node-title {
+    font-size: 0.68rem;
+  }
+
+  .service-node-sub {
+    font-size: 0.56rem;
+  }
+
+  .service-node-software {
+    top: 6px;
+    left: 2px;
+  }
+
+  .service-node-ai {
+    top: 6px;
+    right: 2px;
+  }
+
+  .service-node-mobile {
+    bottom: 8px;
+    left: 2px;
+  }
+
+  .service-node-web {
+    bottom: 8px;
+    right: 2px;
+  }
+
+  .floating-stat-chip {
+    font-size: 0.58rem;
+    padding: 2px 6px;
+  }
+
+  .stat-chip-uptime {
+    top: 92px;
+    right: 2px;
+  }
+
+  .stat-chip-ai {
+    top: 165px;
+    right: 4px;
+  }
+
+  .stat-chip-speed {
+    bottom: 92px;
+    left: 2px;
+  }
+}

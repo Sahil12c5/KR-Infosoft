@@ -1,0 +1,86 @@
+:root {
+  /* Brand Core Colors (Directly Extracted from KR Infosoft Logo) */
+  --primary: #014DAF;
+  --primary-light: #0084FF;
+  --primary-cyan: #00A3FF;
+  --primary-dark: #01368C;
+  --navy: #091C3E;
+  --navy-dark: #040C1D;
+  --navy-light: #0E2954;
+
+  /* Neutrals & Surfaces (Light Mode) */
+  --bg: #FFFFFF;
+  --bg-soft: #F4F8FD;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F6FAFF;
+  --text: #0A1629;
+  --text-secondary: #3B4D68;
+  --muted: #5F738E;
+  --border: #E2ECF8;
+  --border-light: rgba(1, 77, 175, 0.12);
+
+  /* Accents & Gradients (Reflecting the dynamic blue origami blade & KR gradient) */
+  --accent-gradient: linear-gradient(135deg, #0084FF 0%, #014DAF 52%, #01368C 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #2496FF 0%, #005CE6 52%, #0243AB 100%);
+  --accent-gradient-subtle: linear-gradient(135deg, rgba(0, 132, 255, 0.08) 0%, rgba(1, 77, 175, 0.04) 100%);
+  --navy-gradient: linear-gradient(145deg, #091C3E 0%, #040C1D 100%);
+  --navy-card-bg: rgba(14, 41, 84, 0.7);
+  --navy-card-border: rgba(0, 132, 255, 0.2);
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px rgba(1, 77, 175, 0.07);
+  --shadow-md: 0 8px 24px rgba(1, 77, 175, 0.12);
+  --shadow-lg: 0 16px 40px rgba(1, 77, 175, 0.16);
+  --shadow-glow: 0 0 32px rgba(0, 132, 255, 0.35);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(226, 236, 248, 0.85);
+  --glass-blur: blur(14px);
+
+  /* Geometry & Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Blade clip-paths (Inspired by logo geometry) */
+  --blade-clip-right: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  --blade-clip-left: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px);
+  --blade-ribbon: polygon(0 0, 96% 0, 100% 50%, 96% 100%, 0 100%, 4% 50%);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bs-body-font-family: var(--font-body);
+  --bs-font-sans-serif: var(--font-body);
+}
+
+/* Dark Mode Overrides (Logo-aligned Deep Tech Palette) */
+[data-theme="dark"] {
+  --bg: #050C1A;
+  --bg-soft: #081426;
+  --bg-card: #0B1C36;
+  --bg-card-hover: #102647;
+  --text: #F0F6FF;
+  --text-secondary: #BDD0EB;
+  --muted: #829BBF;
+  --border: #142E56;
+  --border-light: rgba(0, 132, 255, 0.2);
+
+  --glass-bg: rgba(8, 20, 38, 0.88);
+  --glass-border: rgba(0, 132, 255, 0.18);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 35px rgba(0, 132, 255, 0.3);
+
+  --navy-card-bg: rgba(11, 28, 54, 0.85);
+  --navy-card-border: rgba(0, 132, 255, 0.24);
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0084FF"/>
+      <stop offset="55%" stop-color="#014DAF"/>
+      <stop offset="100%" stop-color="#01368C"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0084FF" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Background rounded card -->
+  <rect width="64" height="64" rx="14" fill="#091C3E"/>
+  
+  <!-- Stylized Blade / Wings from KR Logo -->
+  <g transform="translate(6, 8)" filter="url(#glow)">
+    <!-- Top Blade -->
+    <polygon points="4,18 20,4 20,24 4,24" fill="#0084FF"/>
+    <!-- Center Blade -->
+    <polygon points="20,4 46,24 20,24" fill="url(#bladeGrad)"/>
+    <!-- Bottom Blade -->
+    <polygon points="4,34 32,34 20,26 4,26" fill="#014DAF"/>
+    <!-- Accents -->
+    <circle cx="44" cy="12" r="3" fill="#00A3FF"/>
+  </g>
+</svg>
