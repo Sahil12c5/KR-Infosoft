@@ -206,7 +206,17 @@ When a visitor submits the contact form, KR Infosoft automatically dispatches:
 
 ## 🌐 Free Deployment Guides
 
-### Deploy to Vercel (Recommended)
+### Deploy to Render (Static Site)
+1. Go to [dashboard.render.com](https://dashboard.render.com/) and click **"New +" > "Static Site"**.
+2. Connect your GitHub repository `https://github.com/Sahil12c5/KR-Infosoft`.
+3. Render automatically reads `render.yaml` with:
+   - **Build Command**: `npm run build`
+   - **Publish Directory**: `dist`
+   - **SPA Rewrite Rule**: `/*` → `/index.html`
+4. Under **Environment Variables**, add any `VITE_EMAILJS_*` keys if configured.
+5. Click **Create Static Site** — your site will be live on Render in ~1 minute!
+
+### Deploy to Vercel (Alternative)
 1. Push this project to GitHub.
 2. Go to [Vercel.com](https://vercel.com/) and click **"Add New Project"**.
 3. Import your GitHub repository.
