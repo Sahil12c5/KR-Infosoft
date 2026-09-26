@@ -85,7 +85,7 @@ export const Navbar = () => {
       <div className="container-xl py-2 py-lg-3">
         <nav className="d-flex align-items-center justify-content-between">
           {/* Logo */}
-          <BrandLogo />
+          <BrandLogo className="navbar-brand-logo" />
 
           {/* Desktop Nav Links */}
           <div className="d-none d-lg-flex align-items-center gap-3 gap-xl-4">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const BrandLogo = ({
-  height = 42,
+  height,
   lightMode = false,
   className = ''
 }) => {
@@ -18,7 +18,7 @@ export const BrandLogo = ({
           alt="KR Infosoft - Software • Web • Mobile • AI Solutions"
           className="brand-logo-img"
           style={{
-            height: `${height}px`,
+            ...(height ? { height: `${height}px` } : {}),
             width: 'auto',
             display: 'block',
             objectFit: 'contain'

@@ -49,11 +49,13 @@
 
 /* Orbital Rings (Concentric Dashed Lines) */
 .orbital-ring {
-  transform-origin: 270px 250px;
+  transform-box: fill-box;
+  transform-origin: center;
   fill: none;
   stroke: rgba(0, 132, 255, 0.16);
   stroke-dasharray: 6 8;
   vector-effect: non-scaling-stroke;
+  will-change: transform;
 }
 
 [data-theme="dark"] .orbital-ring {
@@ -430,10 +432,6 @@
     max-width: 480px;
     height: 460px;
     margin-top: 1.5rem;
-  }
-
-  .orbital-ring {
-    transform-origin: 240px 230px;
   }
 
   .service-node {

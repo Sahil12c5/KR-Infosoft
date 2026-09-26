@@ -40,18 +40,20 @@ export const HeroVisual = () => {
         <circle cx="270" cy="250" r="140" fill="url(#centerHalo)" />
 
         {/* Orbital Concentric Rings */}
-        <circle
-          cx="270"
-          cy="250"
-          r="185"
-          className="orbital-ring orbital-ring-outer"
-        />
-        <circle
-          cx="270"
-          cy="250"
-          r="120"
-          className="orbital-ring orbital-ring-inner"
-        />
+        <g transform="translate(270, 250)">
+          <circle
+            cx="0"
+            cy="0"
+            r="185"
+            className="orbital-ring orbital-ring-outer"
+          />
+          <circle
+            cx="0"
+            cy="0"
+            r="120"
+            className="orbital-ring orbital-ring-inner"
+          />
+        </g>
 
         {/* Cross-Link Mesh Lines (Soft diamond mesh connecting neighboring nodes) */}
         <line x1="120" y1="75" x2="420" y2="75" className="constellation-cross-link" />

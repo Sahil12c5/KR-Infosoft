@@ -110,8 +110,19 @@ a:hover {
 .brand-logo-img {
   display: block;
   max-width: 100%;
-  height: auto;
+  height: 48px;
   image-rendering: -webkit-optimize-contrast;
+}
+
+/* Navbar Logo responsive sizing */
+.navbar-brand-logo .brand-logo-img {
+  height: 48px;
+}
+
+@media (min-width: 992px) {
+  .navbar-brand-logo .brand-logo-img {
+    height: 56px;
+  }
 }
 
 /* Brand Buttons */
