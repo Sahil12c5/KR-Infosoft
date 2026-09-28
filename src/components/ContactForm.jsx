@@ -8,8 +8,33 @@ import siteConfig from '../config/siteConfig';
 export const ContactForm = () => {
   const [searchParams] = useSearchParams();
 
+  // Map URL parameter to dropdown label if navigated with a service query
+  const resolveRequirement = (param) => {
+    if (!param) return '';
+    const map = {
+      'software-development': 'Develop Custom Software',
+      'web-development': 'Develop Custom Software',
+      'mobile-development': 'Build a Mobile App',
+      'ai-solutions': 'AI / GenAI Solution',
+      'mobile-app': 'Build a Mobile App',
+      'custom-software': 'Develop Custom Software',
+      'ai-genai': 'AI / GenAI Solution',
+      'ecommerce-app': 'Build an E-Commerce Website/App',
+      'crm-erp-automation': 'CRM / ERP / Business Automation',
+      'api-backend': 'API / Backend Development',
+      'ui-ux-design': 'UI/UX Design',
+      'software-website-modification': 'Existing Software / Website Modification',
+      'cloud-database': 'Cloud & Database Solutions',
+      'software-testing-automation': 'Software Testing & Automation',
+      'idea-consultation': 'I Have an Idea — Need Consultation',
+      'other': 'Other'
+    };
+    return map[param] || param;
+  };
+
   // Pre-fill fields if query parameters are present
-  const initialService = searchParams.get('service') || '';
+  const rawService = searchParams.get('service') || searchParams.get('requirement') || '';
+  const initialService = resolveRequirement(rawService);
   const initialInquiry = searchParams.get('inquiry') || '';
 
   const [formData, setFormData] = useState({
@@ -56,7 +81,7 @@ export const ContactForm = () => {
     }
 
     if (!formData.service) {
-      newErrors.service = 'Please select a program of interest.';
+      newErrors.service = 'Please select your requirements.';
     }
 
     if (!formData.message.trim()) {
@@ -408,10 +433,10 @@ export const ContactForm = () => {
           {errors.email && <div className="invalid-feedback">{errors.email}</div>}
         </div>
 
-        {/* Course of Interest */}
+        {/* Select Your Requirements */}
         <div className="col-md-6">
           <label className="form-label small fw-bold" style={{ color: 'var(--text)' }}>
-            Course of Interest <span className="text-danger">*</span>
+            Select Your Requirements <span className="text-danger">*</span>
           </label>
           <select
             name="service"
@@ -426,8 +451,8 @@ export const ContactForm = () => {
               padding: '0.75rem 1rem'
             }}
           >
-            <option value="">Select a program...</option>
-            {(siteConfig.programOptions || siteConfig.serviceOptions).map((opt) => (
+            <option value="">Select your requirements...</option>
+            {(siteConfig.requirementOptions || siteConfig.programOptions || siteConfig.serviceOptions).map((opt) => (
               <option key={opt.value} value={opt.label}>
                 {opt.label}
               </option>

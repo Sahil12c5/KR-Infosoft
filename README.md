@@ -137,7 +137,7 @@ export const siteConfig = {
   tagline: "Software • Web • Mobile • AI Solutions",
   
   contact: {
-    email: "contact@krinfosoft.com",
+    email: "info@krinfosoft.in",
     phone: "+91 98765 43210",
     phoneRaw: "+919876543210",          // for tel: links
     whatsapp: "+91 98765 43210",

@@ -13,9 +13,9 @@ export const siteConfig = {
 
   // Contact Information (Updated)
   contact: {
-    email: "officekriteducation@gmail.com",
-    salesEmail: "officekriteducation@gmail.com",
-    supportEmail: "officekriteducation@gmail.com",
+    email: "info@krinfosoft.in",
+    salesEmail: "info@krinfosoft.in",
+    supportEmail: "info@krinfosoft.in",
     phone: "+91 8928433903",
     phoneRaw: "+918928433903", // for tel: links
     secondaryPhone: "+91 9326333750",
@@ -103,27 +103,30 @@ export const siteConfig = {
     { value: "30k-plus", label: "$30,000+ (INR 25L+ Enterprise)" }
   ],
 
-  // Service / Program Options for Dropdown
-  serviceOptions: [
-    { value: "software-dev", label: "Custom Software Development" },
-    { value: "web-dev", label: "Web Application & Portal" },
-    { value: "mobile-dev", label: "Mobile App (iOS & Android)" },
-    { value: "ai-solutions", label: "AI & Machine Learning Solutions" },
-    { value: "full-stack-training", label: "Full Stack Web Development" },
-    { value: "python-datascience", label: "Python & Data Science" },
-    { value: "consulting", label: "Architecture & IT Consulting" }
+  // Requirement Options for Contact Form
+  requirementOptions: [
+    { value: "mobile-app", label: "Build a Mobile App" },
+    { value: "custom-software", label: "Develop Custom Software" },
+    { value: "ai-genai", label: "AI / GenAI Solution" },
+    { value: "ecommerce-app", label: "Build an E-Commerce Website/App" },
+    { value: "crm-erp-automation", label: "CRM / ERP / Business Automation" },
+    { value: "api-backend", label: "API / Backend Development" },
+    { value: "ui-ux-design", label: "UI/UX Design" },
+    { value: "software-website-modification", label: "Existing Software / Website Modification" },
+    { value: "cloud-database", label: "Cloud & Database Solutions" },
+    { value: "software-testing-automation", label: "Software Testing & Automation" },
+    { value: "idea-consultation", label: "I Have an Idea — Need Consultation" },
+    { value: "other", label: "Other" }
   ],
 
-  // Course / Program of Interest Options
-  programOptions: [
-    { value: "software-engineering", label: "Software Engineering & Architecture" },
-    { value: "full-stack-web", label: "Full Stack Web Development" },
-    { value: "mobile-app-dev", label: "Mobile App Development (iOS & Android)" },
-    { value: "ai-ml", label: "Artificial Intelligence & Machine Learning" },
-    { value: "python-datascience", label: "Python & Data Science" },
-    { value: "cloud-devops", label: "Cloud Computing & DevOps" },
-    { value: "custom-software", label: "Custom Software & Web Solutions" }
-  ]
+  // Backward compatibility aliases
+  get serviceOptions() {
+    return this.requirementOptions;
+  },
+  get programOptions() {
+    return this.requirementOptions;
+  }
 };
 
 export default siteConfig;
+
