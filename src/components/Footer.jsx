@@ -7,9 +7,6 @@ import {
   FiClock,
   FiArrowUp,
   FiLinkedin,
-  FiTwitter,
-  FiGithub,
-  FiFacebook,
   FiInstagram
 } from 'react-icons/fi';
 import BrandLogo from './BrandLogo';
@@ -57,54 +54,6 @@ export const Footer = () => {
                 aria-label="LinkedIn"
               >
                 <FiLinkedin size={16} />
-              </a>
-              <a
-                href={siteConfig.socials.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm rounded-circle d-flex align-items-center justify-content-center"
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  color: '#FFFFFF',
-                  border: '1px solid rgba(255, 255, 255, 0.12)'
-                }}
-                aria-label="Twitter"
-              >
-                <FiTwitter size={16} />
-              </a>
-              <a
-                href={siteConfig.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm rounded-circle d-flex align-items-center justify-content-center"
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  color: '#FFFFFF',
-                  border: '1px solid rgba(255, 255, 255, 0.12)'
-                }}
-                aria-label="GitHub"
-              >
-                <FiGithub size={16} />
-              </a>
-              <a
-                href={siteConfig.socials.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm rounded-circle d-flex align-items-center justify-content-center"
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  color: '#FFFFFF',
-                  border: '1px solid rgba(255, 255, 255, 0.12)'
-                }}
-                aria-label="Facebook"
-              >
-                <FiFacebook size={16} />
               </a>
               <a
                 href={siteConfig.socials.instagram}
